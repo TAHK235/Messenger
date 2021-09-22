@@ -1,4 +1,4 @@
-﻿using Messenger;
+﻿using ConsoleMessenger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,16 +15,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace WPFClient
+namespace WpfMesenger
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+  /// <summary>
+  /// Логика взаимодействия для MainWindow.xaml
+  /// </summary>
+  public partial class MainWindow : Window
   {
     private static int MessageID;
     private static string UserName;
-    private static MessengerClientAPI API = new MessengerClientAPI();
+    private static MessangerClientAPI API = new MessangerClientAPI();
     DispatcherTimer timer;
 
     public MainWindow()
@@ -37,7 +37,7 @@ namespace WPFClient
 
     private void Timer_Tick(object sender, object e)
     {
-      Message msg = API.GetMessage(MessageID);
+      ConsoleMessenger.Message msg = API.GetMessage(MessageID);
       while (msg != null)
       {
         MessagesLB.Items.Add(msg);
@@ -52,7 +52,7 @@ namespace WPFClient
       string Message = MessageTB.Text;
       if ((UserName.Length > 1) && (UserName.Length > 1))
       {
-        Message msg = new Message(UserName, Message, DateTime.Now);
+        ConsoleMessenger.Message msg = new ConsoleMessenger.Message(UserName, Message, DateTime.Now);
         API.SendMessage(msg);
       }
     }

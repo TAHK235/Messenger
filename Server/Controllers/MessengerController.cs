@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections;
 using Newtonsoft.Json;
-using Messenger;
+using ConsoleMessenger;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +13,11 @@ namespace Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MessengerController : ControllerBase
+    public class Messenger : ControllerBase
     {
         static List<Message> ListOfMessages = new List<Message>();
 
-        // GET api/<MessengerController>/5
+        // GET api/<Messanger>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
@@ -30,7 +30,7 @@ namespace Server.Controllers
             return OutputString;
         }
 
-        // POST api/<MessengerController>
+        // POST api/<Messanger>
         [HttpPost]
         public IActionResult SendMessage([FromBody] Message msg)
         {

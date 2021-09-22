@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Messenger;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 
-namespace Messenger
+namespace ConsoleMessenger
 {
     class Program
     {
@@ -14,7 +15,7 @@ namespace Messenger
         private static string UserName;
         private static MessengerClientAPI API = new MessengerClientAPI();
 
-        private static void GetNewMessage()
+        private static void GetNewMessages()
         {
             Message msg = API.GetMessage(MessageID);
             while (msg != null)
@@ -26,21 +27,14 @@ namespace Messenger
         }
         static void Main(string[] args)
         {
-            //Message msg = new Message("%Username%", "Hi", DateTime.UtcNow);
-            //string output = JsonConvert.SerializeObject(msg);
-            //Console.WriteLine(output);
-            //Message deserializedMsg = JsonConvert.DeserializeObject<Message>(output);
-            //Console.WriteLine(deserializedMsg);
-            //{ "UserName":"%Username%","MessageText":"Hi","TimeStamp":"2021-09-22T10:37:58.0525037Z"}
-            //%Username% < 22.09.21 10:37:58 >: Hi
             MessageID = 1;
-            Console.WriteLine("Введите Ваше имя: ");
-            //UserName = "%UserName%";
+            Console.WriteLine("Введите Ваше имя:");
+            //UserName = "RusAl";
             UserName = Console.ReadLine();
             string MessageText = "";
             while (MessageText != "exit")
             {
-                GetNewMessage();
+                GetNewMessages();
                 MessageText = Console.ReadLine();
                 if (MessageText.Length > 1)
                 {
