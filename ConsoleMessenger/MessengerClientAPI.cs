@@ -7,13 +7,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Messenger
+namespace ConsoleMessenger
 {
     class MessengerClientAPI
     {
         public void TestNewtonsoftJson()
         {
-            // Tест Json SerializeObject NewtonSoft
+            // Тест JSon SerializeObject NewtonSoft
             Message msg = new Message("%Username%", "Hi", DateTime.UtcNow);
             string output = JsonConvert.SerializeObject(msg);
             Console.WriteLine(output);
@@ -21,14 +21,15 @@ namespace Messenger
             Console.WriteLine(deserializedMsg);
             // Create the file.
             //string path = @"d:\temp\ser.txt";
-            //using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoder))
+            //using (StreamWriter sw = new StreamWriter(path, false, System.Text.Encoding.Default))
             //{
-            //    sw.WriteLine(output);
+            //  sw.WriteLine(output);
             //}
         }
+
         public Message GetMessage(int MessageId)
         {
-            WebRequest request = WebRequest.Create("http://localhost:5000/api/Messenger" + MessageId.ToString());
+            WebRequest request = WebRequest.Create("http://localhost:5000/api/Messenger/" + MessageId.ToString());
             request.Method = "Get";
             WebResponse response = request.GetResponse();
             string status = ((HttpWebResponse)response).StatusDescription;

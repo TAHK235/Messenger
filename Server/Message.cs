@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Messenger
+namespace ConsoleMessenger
 {
     [Serializable]
     public class Message
@@ -12,12 +11,6 @@ namespace Messenger
         public string MessageText { get; set; }
         public DateTime TimeStamp { get; set; }
 
-        public Message(string userName, string messageText, DateTime timeStamp)
-        {
-            UserName = userName;
-            MessageText = messageText;
-            TimeStamp = timeStamp;
-        }
         public Message()
         {
             UserName = "System";
@@ -25,9 +18,16 @@ namespace Messenger
             TimeStamp = DateTime.UtcNow;
         }
 
+        public Message(string userName, string messageText, DateTime timeStamp)
+        {
+            UserName = userName;
+            MessageText = messageText;
+            TimeStamp = timeStamp;
+        }
+
         public override string ToString()
         {
-            string output = String.Format("{0} <{2}>: {1}", UserName, MessageText, TimeStamp);
+            string output = String.Format("{0} {2} {1}", UserName, MessageText, TimeStamp);
             return output;
         }
     }
