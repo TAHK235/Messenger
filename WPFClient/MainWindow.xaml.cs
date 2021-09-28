@@ -30,7 +30,7 @@ namespace WPFClient
     public MainWindow()
     {
       InitializeComponent();
-      timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 1) }; // 1 секунда
+      timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 1) }; // 1 секунда
       timer.Tick += Timer_Tick;
       timer.Start();
     }
@@ -56,5 +56,10 @@ namespace WPFClient
         API.SendMessage(msg);
       }
     }
-  }
+
+        private void MessagesLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }
